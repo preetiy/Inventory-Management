@@ -9,4 +9,4 @@ admin can edit, delete, disable the product
 user can only view the product actions buttons (icons) will be disable
 
 API: https://dev-0tf0hinghgjl39z.api.raw-labs.com/inventory
-Method: GET
+Method: GET# Inventory-Management
