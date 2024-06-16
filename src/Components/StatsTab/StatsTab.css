@@ -1,0 +1,29 @@
+.tab-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 4rem;
+}
+.tab-box{
+    background-color: #243325;
+    padding: 2rem 1rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    width: 18%;
+}
+.heading {
+    display: flex;
+    justify-content: space-around;
+    row-gap: 10px;
+    color: white;
+}
+.t-text{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.stats-heading{
+    color: white;
+    margin: 0 4rem;
+}

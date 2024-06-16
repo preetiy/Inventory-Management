@@ -1,0 +1,19 @@
+.table-cell-back {
+    background-color: #000;
+    padding: 0.6rem;
+    border-radius: 8px;
+}
+
+.table-cell {
+    color: #fff !important;
+    background-color: #1A1D1A;
+}
+
+.disable-cell {
+    color: grey !important;
+    background-color: #1A1D1A !important;
+}
+
+.head-row{
+    color: greenyellow;
+}
