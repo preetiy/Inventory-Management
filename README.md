@@ -1,7 +1,7 @@
 Inventory management web app where you can check list of all product and can manage the product available in the inventory like editing the price and quantity deleting the product and disabling the product.
 
 
-This app will have two view admin and user which can be switch from navigation bar using switch button
+This app has two view admin and user which can be switch from navigation bar using switch button
 
 1. Admin
 admin can edit, delete, disable the product
