@@ -17,7 +17,7 @@ const darkTheme = createTheme({
   },
 });
 
-const EditPopUp = ({ open, setOpen, selectedProduct, handleSave }) => {
+const EditPopUp = ({ showPopUp, setShowPopUp, selectedProduct, handleSave }) => {
   const [product, setProduct] = useState({
     quantity: selectedProduct.quantity,
     value: parseInt(selectedProduct.value.substring(1)),
@@ -55,14 +55,14 @@ const EditPopUp = ({ open, setOpen, selectedProduct, handleSave }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Dialog open={open}>
+      <Dialog open={showPopUp}>
         <DialogTitle>
           <div>Edit Product</div>
           <div>{selectedProduct.name}</div>
         </DialogTitle>
 
         <DialogContent>
-          <div className="col-1">
+          <div className="dialog-content">
             <TextField
               sx={{ margin: '1rem' }}
               className="mx-1"
@@ -82,7 +82,7 @@ const EditPopUp = ({ open, setOpen, selectedProduct, handleSave }) => {
             />
           </div>
 
-          <div className="col-1">
+          <div className="dialog-content">
             <TextField
               sx={{ margin: '1rem' }}
               name="quantity"
@@ -102,7 +102,7 @@ const EditPopUp = ({ open, setOpen, selectedProduct, handleSave }) => {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)} style={{color: 'greenyellow'}}>
+          <Button onClick={() => setShowPopUp(false)} style={{color: 'greenyellow'}}>
             Cancel
           </Button>
           <Button onClick={handleSubmit} color="secondary">

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import EditPopUp from '../EditPopUp/EditPopUp';
 import {
     TableBody, TableCell, TableContainer, TableHead, TableRow, Table, IconButton,
 } from '@mui/material';
@@ -7,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import './ItemList.css';
-import EditPopUp from '../EditPopUp/EditPopUp';
 
 function ItemList({ products, setProducts, isUser, showProducts, setShowProducts }) {
     const [openEdit, setOpenEdit] = useState(false);
@@ -46,21 +46,21 @@ function ItemList({ products, setProducts, isUser, showProducts, setShowProducts
         }
     }, [disableRows, products, setProducts, showProducts]);
 
-    const columns = useMemo(() => Object.keys(showProducts[0] || {}), [showProducts]);
+    const actionTabs = useMemo(() => Object.keys(showProducts[0] || {}), [showProducts]);
 
     return (
         <div>
             <TableContainer>
-                <Table sx={{ width: '98%', margin: '1rem' }}>
+                <Table sx={{ width: '94%', margin: '1rem' }}>
                     <TableHead>
                         <TableRow>
-                            {columns.map((column, index) => (
-                                <TableCell className='table-cell' key={index}>
-                                    <span className='table-cell-back head-row'>{column.toUpperCase()}</span>
+                            {actionTabs.map((actionTab, index) => (
+                                <TableCell className='active-cell' key={index}>
+                                    <span className='active-cell-item  head-row'>{actionTab.toUpperCase()}</span>
                                 </TableCell>
                             ))}
-                            <TableCell className='table-cell'>
-                                <span className='table-cell-back head-row'>ACTION</span>
+                            <TableCell className='active-cell'>
+                                <span className='active-cell-item  head-row'>ACTION</span>
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -70,12 +70,12 @@ function ItemList({ products, setProducts, isUser, showProducts, setShowProducts
                                 {Object.values(product).map((value, index) => (
                                     <TableCell
                                         key={index}
-                                        className={disableRows.includes(product.name) ? 'disable-cell' : 'table-cell'}
+                                        className={disableRows.includes(product.name) ? 'disable-cell' : 'active-cell'}
                                     >
                                         {value}
                                     </TableCell>
                                 ))}
-                                <TableCell className={disableRows.includes(product.name) ? 'disable-cell' : 'table-cell'}>
+                                <TableCell className={disableRows.includes(product.name) ? 'disable-cell' : 'active-cell'}>
                                     <IconButton disabled={isUser || disableRows.includes(product.name)} onClick={() => handleEdit(product)}>
                                         <EditIcon color={isUser || disableRows.includes(product.name) ? 'disabled' : 'success'} />
                                     </IconButton>
@@ -97,8 +97,8 @@ function ItemList({ products, setProducts, isUser, showProducts, setShowProducts
             </TableContainer>
             {openEdit && (
                 <EditPopUp
-                    open={openEdit}
-                    setOpen={setOpenEdit}
+                    showPopUp={openEdit}
+                    setShowPopUp={setOpenEdit}
                     selectedProduct={selectedProduct}
                     handleSave={handleSave}
                 />
